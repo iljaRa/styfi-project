@@ -1,6 +1,6 @@
 # Full backend solution for an app that matches a potential T-Shirt from an input image to the images in a toy-database (images and information scraped from hm.com) 
 
-## Installation Computer Vision tools, MySQL and JAVA based server on an empty machine, e.g. EC2 by AWS.
+## Installation of Computer Vision tools, MySQL and JAVA based server on an empty machine, e.g. EC2 by AWS.
 
 The following instructions assume that you are deploying the app on a new (virtual) Ubuntu 16.04 machine.
 
