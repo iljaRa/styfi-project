@@ -10,6 +10,7 @@ If you are trying out the code on your local machine, we recommend creating a ne
 
 First, DOWNLOAD all the repositories including data and the searchengine
 ```
+cd ~/
 mkdir git_repos;
 cd git_repos;
 git clone https://github.com/iljaRa/styfi-project.git
@@ -18,6 +19,7 @@ tar xzf dataset_hm.tar.gz
 cd 
 mkdir software_misc
 ```
+(By the way, *styfi* = style finder.)
 
 Second, INSTALL all the necessary packages and libraries
 ```
@@ -31,7 +33,7 @@ for that, make sure to upload FileCounter.war from the downloaded git repository
 ```
 sudo service tomcat7 start
 cd /var/lib/tomcat7/webapps/
-sudo cp ~/git_repos/styfi_dir_on_server/FileCounter.war .
+sudo cp ~/git_repos/styfi-project/styfi-server/FileCounter.war .
 sudo service tomcat7 restart
 ```
 
@@ -57,14 +59,12 @@ quit
 ```
 Then, add infos from the scraped html files to the database
 ```
-cd ~/git_repos/styfi-project
-tar xzf infos.tar.gz 
 python3 add_info_to_db.py 1
 ```
 
 ```
 cd /var/lib/tomcat7/webapps
-cp ~/software_misc/bash_script.sh .
+cp ~/git_repos/styfi-project/styfi-server/bash_script.sh .
 sudo chmod +x bash_script.sh
 ```
 Set the necessary permissions for `git_repos/`
@@ -82,11 +82,25 @@ Now, upload `StyFiServer.war` (if there already is one, then delete it [PLEASE B
 cd /var/lib/tomcat7/webapps
 # The line below deletes the existing StyFiServer.war, do think twice
 sudo rm -r StyFiServer*
-sudo cp StyFiServer.war .
+sudo cp ~/git_repos/styfi-project/styfi-server/StyFiServer.war .
 sudo service tomcat7 restart
-sudo cp bash_script.sh StyFiServer
+sudo cp bash_script.sh StyFiServer/
 sudo chmod +x StyFiServer/bash_script.sh
 ```
 
 Finally, you can test if the setup worked by accessing http://<HOST-IP-ADDRESS>:8080/StyFiServer/ImageUpload
 as a repsonse, you should see some information about the T-Shirt, including a URL of the found item (that should match your query)
+
+## Setting up the server
+To set up `StyfiServer` and create `StyfiServer.war`, use the JAVA classes inside `styfi-project/styfi-server`.
+
+## Getting data
+To scrape fashion data from hm.com, use the code inside `styfi-project/hm_fashion_scraper`. Note that as the website design changes very often, you might have to adjust the code appropriately.
+
+Also, very important, check hm.com/robots.txt to see whether hm.com allows to scrape the information. At the time of writing this text, it is allowed because hm.com/robots.txt returns:
+```
+User-agent: *
+Disallow:
+```
+
+Note that it is generally recommended to use the API of the store to scrape data. However, we wrote our own scraper because it is more educative and fun, and gives us more flexibility.
