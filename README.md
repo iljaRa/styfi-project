@@ -21,7 +21,6 @@ tar xzf dataset_hm.tar.gz
 cd 
 mkdir software_misc
 ```
-(By the way, *styfi* = style finder.)
 
 Second, INSTALL all the necessary packages and libraries
 ```
