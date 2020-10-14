@@ -1,5 +1,5 @@
-Style Finder app (StyFi)
-Full backend solution for an app that matches a potential T-Shirt from an input image to the images in a toy-database (images and information scraped from hm.com) 
+# Style Finder app (StyFi)
+Full backend solution for an app that matches a potential T-Shirt from an input image to images from a database (images and information scraped from hm.com). 
 
 ## Installation
 This installation concerns the Computer Vision tools, MySQL and JAVA based server on a remote machine, e.g. EC2 by AWS
